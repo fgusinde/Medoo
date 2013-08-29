@@ -462,6 +462,21 @@ class medoo
 	{
 		return 0 + ($this->query('SELECT SUM(' . $column . ') FROM ' . $table . $this->where_clause($where))->fetchColumn());
 	}
+	
+	public function commit()
+	{
+		return $this->exec('commit');
+	}
+	
+	public function starttrx()
+	{
+		return $this->exec('start transaction');
+	}
+	
+	public function noautocommit()
+	{
+		return $this->exec('SET autocommit=0');
+	}
 
 	public function error()
 	{
